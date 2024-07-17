@@ -1,8 +1,9 @@
 "use client";
 
 import { useFormState } from "react-dom";
-import register from "../actions/register";
+
 import Link from "next/link";
+import { register } from "../actions/register";
 
 export default function RegisterForm() {
   const [error, action] = useFormState(register, {});

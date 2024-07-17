@@ -3,6 +3,7 @@ import { PiDotsThreeOutlineVerticalBold } from "react-icons/pi";
 import { PiNotePencilBold } from "react-icons/pi";
 import DeleteDropDown from "./DeleteDropDown";
 import { getUser } from "../actions/users";
+import { PiTrashBold } from "react-icons/pi";
 
 export default async function UserTable() {
   const users = await getUser();
@@ -49,7 +50,7 @@ export default async function UserTable() {
                         Edit
                         <PiNotePencilBold />
                       </Link>
-                      <DeleteDropDown id={user.id} />
+                      <DeleteDropDown id={user.id} type="USER" />
                     </li>
                   </ul>
                 </div>

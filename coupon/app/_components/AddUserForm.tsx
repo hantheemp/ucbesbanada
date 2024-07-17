@@ -7,7 +7,10 @@ export default function AddUserForm() {
   const [error, action] = useFormState(addUser, {});
 
   return (
-    <form className="my-8 flex justify-center align-center text-l font-bold" action={action}>
+    <form
+      className="my-8 flex justify-center align-center text-l font-bold"
+      action={action}
+    >
       <div>
         <label className="form-control w-full max-w-xs">
           <label className="mb-2" htmlFor="name">
@@ -84,13 +87,14 @@ export default function AddUserForm() {
           <label className="mb-2" htmlFor="roleFilter">
             Role Filter
           </label>
-          <input
-            type="text"
-            placeholder="+90 543 942 4001"
+          <select
             className="input input-bordered w-full max-w-xs mb-2"
             id="roleFilter"
             name="roleFilter"
-          />
+          >
+            <option value="U">U</option>
+            <option value="AU">AU</option>
+          </select>
           {error.roleFilter && (
             <div className="text-destructive">{error.roleFilter}</div>
           )}
@@ -101,7 +105,7 @@ export default function AddUserForm() {
           </label>
           <input
             type="text"
-            placeholder="+90 543 942 4001"
+            placeholder="JOHN10"
             className="input input-bordered w-full max-w-xs mb-2"
             id="couponCode"
             name="couponCode"
@@ -116,7 +120,7 @@ export default function AddUserForm() {
           </label>
           <input
             type="text"
-            placeholder="+90 543 942 4001"
+            placeholder="100"
             className="input input-bordered w-full max-w-xs mb-2"
             id="pointsGained"
             name="pointsGained"

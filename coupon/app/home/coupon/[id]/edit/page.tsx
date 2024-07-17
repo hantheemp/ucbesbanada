@@ -1,12 +1,13 @@
 import User from "@/app/(models)/User";
 import EditCouponForm from "@/app/_components/EditCoupon";
+import { getRelatedAgent } from "@/app/actions/agent";
 
 export default async function EditUser({
   params: { id },
 }: {
   params: { id: string };
 }) {
-    const user = await User.findOne({ _id: id });
+  const user = await User.findOne({ _id: id });
 
   if (!user) {
     return <div>User not found</div>;

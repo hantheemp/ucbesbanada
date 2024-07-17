@@ -127,8 +127,8 @@ export default function EditUserForm({
             name="roleFilter"
             defaultValue={roleFilter}
           >
-            <option value="AU">AU</option>
             <option value="U">U</option>
+            <option value="AU">AU</option>
           </select>
 
           {error.roleFilter && (

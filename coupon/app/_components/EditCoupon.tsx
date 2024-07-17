@@ -1,6 +1,5 @@
 "use client";
 
-import { editUser } from "../actions/users";
 import React from "react";
 import { useFormState } from "react-dom";
 import { editCoupon } from "../actions/coupon";
@@ -18,6 +17,32 @@ export default function EditCouponForm({
   };
 }) {
   const [error, action] = useFormState(editCoupon, {});
+
+  function splitCommission(couponCode: string) {
+    let parts = couponCode.split("%");
+
+    let firstPart;
+
+    let secondPart;
+
+    if (parts.length === 2) {
+      firstPart = parts[0];
+      secondPart = parts[1];
+    }
+
+    const agentNameAndCommission = {
+      agentName: firstPart,
+      agentCommission: secondPart,
+    };
+
+    return agentNameAndCommission;
+  }
+
+  const agentInfo = splitCommission(couponCode);
+
+  const agentCommission = agentInfo.agentCommission;
+
+  console.log(agentCommission);
 
   return (
     <div>
@@ -64,6 +89,38 @@ export default function EditCouponForm({
             />
             {error.couponCode && (
               <div className="text-desctructive">{error.couponCode}</div>
+            )}
+          </label>
+          <label className="form-control w-full max-w-xs">
+            <label className="mb-2" htmlFor="commission">
+              Commission
+            </label>
+            <input
+              type="number"
+              placeholder="Commission"
+              className="input input-bordered w-full max-w-xs mb-2"
+              id="commission"
+              name="commission"
+              defaultValue={agentCommission}
+            />
+            {error.couponCode && (
+              <div className="text-desctructive">{error.couponCode}</div>
+            )}
+          </label>
+          <label className="form-control w-full max-w-xs">
+            <label className="mb-2" htmlFor="cost">
+              Cost
+            </label>
+            <input
+              type="number"
+              placeholder="Cost"
+              className="input input-bordered w-full max-w-xs mb-2"
+              id="cost"
+              name="cost"
+              defaultValue={pointsGained}
+            />
+            {error.pointsGained && (
+              <div className="text-desctructive">{error.pointsGained}</div>
             )}
           </label>
           <label className="form-control w-full max-w-xs">
