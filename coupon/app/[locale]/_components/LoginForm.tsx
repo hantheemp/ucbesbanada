@@ -3,7 +3,7 @@
 import { useFormState } from "react-dom";
 import Link from "next/link";
 import { useLocale } from "next-intl";
-import { login } from "@/actions/login";
+import { login } from "@/pages/actions/login";
 import { getCookie, hasCookie } from "cookies-next";
 import { cookies } from "next/headers";
 
