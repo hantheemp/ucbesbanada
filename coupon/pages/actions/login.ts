@@ -6,7 +6,6 @@ import User from "@/app/[locale]/(models)/User";
 import { createSession } from "./session";
 import { getCookie, getCookies, setCookie } from "cookies-next";
 import { cookies } from "next/headers";
-import { createCookie } from "./cookie";
 const bcrypt = require("bcrypt");
 
 const loginSchema = z.object({
@@ -41,7 +40,10 @@ export async function login(prevState: unknown, formData: FormData) {
   }
 
   await createSession(user._id, data.locale);
-  await createCookie(user.authDoctor);
+  cookies().set("authDoctor", user.authDoctor, {
+    httpOnly: false,
+    secure: false,
+  });
 
   switch (user.roleFilter) {
     case "U":
