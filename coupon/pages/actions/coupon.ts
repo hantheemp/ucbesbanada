@@ -3,8 +3,6 @@
 import { redirect } from "next/navigation";
 import User from "@/app/[locale]/(models)/User";
 import z from "zod";
-import { getCookie } from "cookies-next";
-import { getLocale } from "next-intl/server";
 import { cookies } from "next/headers";
 
 const editSchema = z.object({
