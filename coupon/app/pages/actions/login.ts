@@ -3,8 +3,6 @@
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import User from "@/app/[locale]/(models)/User";
-import { createSession } from "./session";
-import { getCookie, getCookies, setCookie } from "cookies-next";
 import { cookies } from "next/headers";
 const bcrypt = require("bcrypt");
 
@@ -39,7 +37,6 @@ export async function login(prevState: unknown, formData: FormData) {
     return;
   }
 
-  await createSession(user._id, data.locale);
   cookies().set("authDoctor", user.authDoctor, {
     httpOnly: false,
     secure: false,

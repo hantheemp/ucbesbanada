@@ -3,7 +3,6 @@
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import User from "@/app/[locale]/(models)/User";
-import { createSession } from "./session";
 const bcrypt = require("bcrypt");
 
 const registerSchema = z.object({
@@ -49,7 +48,6 @@ export async function register(prevState: unknown, formData: FormData) {
   });
 
   await newUser.save();
-  await createSession(newUser._id, data.locale);
 }
 
 export async function registerByDoctor(prevState: unknown, formData: FormData) {
@@ -84,7 +82,6 @@ export async function registerByDoctor(prevState: unknown, formData: FormData) {
   });
 
   await newUser.save();
-  await createSession(newUser._id, data.locale);
   redirect(`/${data.locale}/login`);
 }
 
@@ -117,7 +114,6 @@ export async function registerByAgent(prevState: unknown, formData: FormData) {
   });
 
   await newUser.save();
-  await createSession(newUser._id, data.locale);
 
   redirect("/register/thanks");
 }
