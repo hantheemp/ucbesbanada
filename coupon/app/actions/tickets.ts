@@ -2,7 +2,8 @@
 
 import { redirect } from "next/navigation";
 import { z } from "zod";
-import Ticket from "../(models)/Ticket";
+import Ticket from "../[locale]/(models)/Ticket";
+import { getCookie } from "cookies-next";
 
 const createSchema = z.object({
   id: z.string(),
@@ -12,6 +13,7 @@ const createSchema = z.object({
   withdrawAmount: z.coerce.number().int(),
   description: z.string(),
   status: z.string(),
+  locale: z.string().optional(),
 });
 
 export async function getTicket(status: string) {
@@ -27,6 +29,19 @@ export async function getTicket(status: string) {
   }
 }
 
+export async function getTicketDU(status: string, authDoctor : string) {
+  switch (status) {
+    case "PENDING":
+      return await Ticket.find({ status: "PENDING", authDoctor: authDoctor });
+    case "APPROVED":
+      return await Ticket.find({ status: "APPROVED", authDoctor: authDoctor });
+    case "CANCELLED":
+      return await Ticket.find({ status: "CANCELLED", authDoctor: authDoctor });
+    default:
+      throw new Error("Invalid status");
+  }
+}
+
 export async function createTicket(prevState: unknown, formData: FormData) {
   const result = createSchema.safeParse(Object.fromEntries(formData.entries()));
 
@@ -35,6 +50,7 @@ export async function createTicket(prevState: unknown, formData: FormData) {
   }
 
   const data = result.data;
+  const authDoctor = getCookie("authDoctor") + "";
 
   await Ticket.create({
     name: data.name,
@@ -43,9 +59,10 @@ export async function createTicket(prevState: unknown, formData: FormData) {
     withdrawAmount: data.withdrawAmount,
     description: data.description,
     status: "PENDING",
+    authDoctor : authDoctor,
   });
 
-  redirect(`/agent/${data.id}`);
+  redirect(`/${data.locale}/agent/${data.id}`);
 }
 
 export async function editTicket(prevState: unknown, formData: FormData) {
@@ -66,7 +83,7 @@ export async function editTicket(prevState: unknown, formData: FormData) {
     }
   );
 
-  redirect("/home");
+  redirect(`/${data.locale}/home`);
 }
 
 export async function deleteTicket(id: string) {

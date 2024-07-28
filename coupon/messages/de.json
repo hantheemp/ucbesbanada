@@ -1,0 +1,85 @@
+{
+    "Home": {
+      "name": "üç beş bana da",
+      "navbar-home": "Hauptmenü",
+      "navbar-user": "Benutzerverwaltung",
+      "navbar-coupon": "Gutscheinverwaltung",
+      "navbar-qr": "QR",
+      "home-pending": "Ausstehend",
+      "home-approved": "Genehmigt",
+      "home-cancelled": "Abgebrochen",
+      "home-edit": "Bearbeiten",
+      "home-delete": "Löschen",
+      "home-edit-name": "Name",
+      "home-edit-surname": "Nachname",
+      "home-edit-iban": "IBAN",
+      "home-edit-withdrawAmount": "Abhebungsbetrag",
+      "home-edit-description": "Beschreibung",
+      "home-edit-status": "Status"
+    },
+    "User": {
+      "user-add": "Neuen Benutzer hinzufügen",
+      "user-add-name": "Name",
+      "user-add-surname": "Nachname",
+      "user-add-email": "E-Mail",
+      "user-add-password": "Passwort",
+      "user-add-telephoneNumber": "Telefon",
+      "user-add-roleFilter": "Rollenfilter",
+      "user-add-couponCode": "Gutscheincode",
+      "user-add-pointsGained": "Gesammelte Punkte",
+      "user-add-submit": "Einreichen",
+      "user-table-name": "Name",
+      "user-table-surname": "Nachname",
+      "user-table-email": "E-Mail",
+      "user-table-telephoneNumber": "Telefon",
+      "user-table-roleFilter": "Rollenfilter",
+      "user-table-couponCode": "Gutscheincode",
+      "user-table-pointsGained": "Gesammelte Punkte",
+      "user-table-actions": "Aktionen",
+      "user-table-edit": "Bearbeiten",
+      "user-table-delete": "Löschen"
+    },
+    "Coupon": {
+      "coupon-edit": "Bearbeiten",
+      "coupon-edit-couponCode": "Gutscheincode",
+      "coupon-edit-commission": "Kommission",
+      "coupon-edit-cost": "Kosten",
+      "coupon-edit-pointsGained": "Gesammelte Punkte",
+      "coupon-edit-submit": "Einreichen"
+    },
+    "Login": {
+      "login-email": "E-Mail",
+      "login-password": "Passwort",
+      "login-submit": "Einreichen",
+      "login-forgotpass": "Passwort vergessen?",
+      "login-register": "Kein Konto?"
+    },
+    "Register": {
+      "register-name": "Name",
+      "register-surname": "Nachname",
+      "register-email": "E-Mail",
+      "register-password": "Passwort",
+      "register-telephoneNumber": "Telefonnummer",
+      "register-submit": "Einreichen",
+      "register-login": "Bereits ein Konto?"
+    },
+    "Agent": {
+      "agent-welcome": "Willkommen,",
+      "agent-yourCouponCode": "Ihr Gutscheincode:",
+      "agent-registerSomeone": "Um eine neue Registrierung mit Ihrem Code zu erstellen, scannen Sie diesen QR-Code!",
+      "agent-paymentRequest": "Zahlungsanforderung erstellen",
+      "agent-paymentRequest-name": "Name",
+      "agent-paymentRequest-surname": "Nachname",
+      "agent-paymentRequest-iban": "IBAN",
+      "agent-paymentRequest-withdrawAmount": "Abhebungsbetrag",
+      "agent-paymentRequest-note": "Ihre Notiz",
+      "agent-paymentRequest-submit": "Einreichen",
+      "agent-register-name": "Name",
+      "agent-register-surname": "Nachname",
+      "agent-register-email": "E-Mail",
+      "agent-register-password": "Passwort",
+      "agent-register-telephoneNumber": "Telefonnummer",
+      "agent-register-submit": "Einreichen"
+    }
+  }
+  

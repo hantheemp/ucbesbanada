@@ -1,8 +1,10 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import User from "../(models)/User";
+import User from "../[locale]/(models)/User";
 import z from "zod";
+import { getCookie } from "cookies-next";
+import { getLocale } from "next-intl/server";
 
 const editSchema = z.object({
   id: z.string(),
@@ -42,4 +44,44 @@ export async function editCoupon(prevState: unknown, formData: FormData) {
   );
 
   redirect("/home/coupon");
+}
+
+export async function getCouponDU() {
+  const authDoctor = getCookie("authDoctor") + "";
+  return User.find({
+    authDoctor: authDoctor,
+  });
+}
+
+export async function getCouponByIdDU(id: string) {
+  const authDoctor = getCookie("authDoctor") + "";
+  return User.find({
+    _id: id,
+    authDoctor: authDoctor,
+  });
+}
+
+export async function editCouponDU(prevState: unknown, formData: FormData) {
+  const result = editSchema.safeParse(Object.fromEntries(formData));
+
+  if (result.success === false) {
+    console.log(result.error.formErrors.fieldErrors);
+    return result.error.formErrors.fieldErrors;
+  }
+
+  const data = result.data;
+  const authDoctor = getCookie("authDoctor") + "";
+
+  data.pointsGained = data.pointsGained + (data.cost * data.commission) / 100;
+
+  await User.updateOne(
+    {
+      _id: data.id,
+    },
+    {
+      $set: data,
+    }
+  );
+
+  redirect(`${getLocale()}/du/${authDoctor}`);
 }

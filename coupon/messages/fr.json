@@ -1,0 +1,85 @@
+{
+    "Home": {
+      "name": "üç beş bana da",
+      "navbar-home": "Menu Principal",
+      "navbar-user": "Gestion des Utilisateurs",
+      "navbar-coupon": "Gestion des Coupons",
+      "navbar-qr": "QR",
+      "home-pending": "En Attente",
+      "home-approved": "Approuvé",
+      "home-cancelled": "Annulé",
+      "home-edit": "Éditer",
+      "home-delete": "Supprimer",
+      "home-edit-name": "Nom",
+      "home-edit-surname": "Prénom",
+      "home-edit-iban": "IBAN",
+      "home-edit-withdrawAmount": "Montant de Retrait",
+      "home-edit-description": "Description",
+      "home-edit-status": "Statut"
+    },
+    "User": {
+      "user-add": "Ajouter un Nouvel Utilisateur",
+      "user-add-name": "Prénom",
+      "user-add-surname": "Nom",
+      "user-add-email": "Email",
+      "user-add-password": "Mot de Passe",
+      "user-add-telephoneNumber": "Téléphone",
+      "user-add-roleFilter": "Filtre de Rôle",
+      "user-add-couponCode": "Code Coupon",
+      "user-add-pointsGained": "Points Gagnés",
+      "user-add-submit": "Soumettre",
+      "user-table-name": "Nom",
+      "user-table-surname": "Prénom",
+      "user-table-email": "Email",
+      "user-table-telephoneNumber": "Téléphone",
+      "user-table-roleFilter": "Filtre de Rôle",
+      "user-table-couponCode": "Code Coupon",
+      "user-table-pointsGained": "Points Gagnés",
+      "user-table-actions": "Actions",
+      "user-table-edit": "Éditer",
+      "user-table-delete": "Supprimer"
+    },
+    "Coupon": {
+      "coupon-edit": "Éditer",
+      "coupon-edit-couponCode": "Code Coupon",
+      "coupon-edit-commission": "Commission",
+      "coupon-edit-cost": "Coût",
+      "coupon-edit-pointsGained": "Points Gagnés",
+      "coupon-edit-submit": "Soumettre"
+    },
+    "Login": {
+      "login-email": "Email",
+      "login-password": "Mot de Passe",
+      "login-submit": "Soumettre",
+      "login-forgotpass": "Mot de Passe Oublié ?",
+      "login-register": "Pas de Compte ?"
+    },
+    "Register": {
+      "register-name": "Nom",
+      "register-surname": "Prénom",
+      "register-email": "Email",
+      "register-password": "Mot de Passe",
+      "register-telephoneNumber": "Numéro de Téléphone",
+      "register-submit": "Soumettre",
+      "register-login": "Déjà un Compte ?"
+    },
+    "Agent": {
+      "agent-welcome": "Bienvenue,",
+      "agent-yourCouponCode": "Votre Code Coupon :",
+      "agent-registerSomeone": "Pour enregistrer quelqu'un avec votre code, scannez ce code QR !",
+      "agent-paymentRequest": "Faire une Demande de Paiement",
+      "agent-paymentRequest-name": "Nom",
+      "agent-paymentRequest-surname": "Prénom",
+      "agent-paymentRequest-iban": "IBAN",
+      "agent-paymentRequest-withdrawAmount": "Montant de Retrait",
+      "agent-paymentRequest-note": "Votre Note",
+      "agent-paymentRequest-submit": "Soumettre",
+      "agent-register-name": "Nom",
+      "agent-register-surname": "Prénom",
+      "agent-register-email": "Email",
+      "agent-register-password": "Mot de Passe",
+      "agent-register-telephoneNumber": "Numéro de Téléphone",
+      "agent-register-submit": "Soumettre"
+    }
+  }
+  

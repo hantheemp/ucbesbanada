@@ -1,0 +1,85 @@
+{
+    "Home": {
+      "name": "tre cinque anche per me",
+      "navbar-home": "Menu Principale",
+      "navbar-user": "Gestione Utenti",
+      "navbar-coupon": "Gestione Coupon",
+      "navbar-qr": "QR",
+      "home-pending": "In Attesa",
+      "home-approved": "Approvato",
+      "home-cancelled": "Cancellato",
+      "home-edit": "Modifica",
+      "home-delete": "Elimina",
+      "home-edit-name": "Nome",
+      "home-edit-surname": "Cognome",
+      "home-edit-iban": "IBAN",
+      "home-edit-withdrawAmount": "Importo da Prelevare",
+      "home-edit-description": "Descrizione",
+      "home-edit-status": "Stato"
+    },
+    "User": {
+      "user-add": "Aggiungi Nuovo Utente",
+      "user-add-name": "Nome",
+      "user-add-surname": "Cognome",
+      "user-add-email": "Email",
+      "user-add-password": "Password",
+      "user-add-telephoneNumber": "Telefono",
+      "user-add-roleFilter": "Filtro Ruolo",
+      "user-add-couponCode": "Codice Coupon",
+      "user-add-pointsGained": "Punti Guadagnati",
+      "user-add-submit": "Invia",
+      "user-table-name": "Nome",
+      "user-table-surname": "Cognome",
+      "user-table-email": "Email",
+      "user-table-telephoneNumber": "Telefono",
+      "user-table-roleFilter": "Filtro Ruolo",
+      "user-table-couponCode": "Codice Coupon",
+      "user-table-pointsGained": "Punti Guadagnati",
+      "user-table-actions": "Azioni",
+      "user-table-edit": "Modifica",
+      "user-table-delete": "Elimina"
+    },
+    "Coupon": {
+      "coupon-edit": "Modifica",
+      "coupon-edit-couponCode": "Codice Coupon",
+      "coupon-edit-commission": "Commissione",
+      "coupon-edit-cost": "Costo",
+      "coupon-edit-pointsGained": "Punti Guadagnati",
+      "coupon-edit-submit": "Invia"
+    },
+    "Login": {
+      "login-email": "Email",
+      "login-password": "Password",
+      "login-submit": "Invia",
+      "login-forgotpass": "Hai dimenticato la password?",
+      "login-register": "Non hai un account?"
+    },
+    "Register": {
+      "register-name": "Nome",
+      "register-surname": "Cognome",
+      "register-email": "Email",
+      "register-password": "Password",
+      "register-telephoneNumber": "Numero di Telefono",
+      "register-submit": "Invia",
+      "register-login": "Hai già un account?"
+    },
+    "Agent": {
+      "agent-welcome": "Benvenuto,",
+      "agent-yourCouponCode": "Il tuo Codice Coupon:",
+      "agent-registerSomeone": "Per creare una nuova registrazione con il tuo codice, scansiona questo codice QR!",
+      "agent-paymentRequest": "Crea Richiesta di Pagamento",
+      "agent-paymentRequest-name": "Nome",
+      "agent-paymentRequest-surname": "Cognome",
+      "agent-paymentRequest-iban": "IBAN",
+      "agent-paymentRequest-withdrawAmount": "Importo da Prelevare",
+      "agent-paymentRequest-note": "La tua Nota",
+      "agent-paymentRequest-submit": "Invia",
+      "agent-register-name": "Nome",
+      "agent-register-surname": "Cognome",
+      "agent-register-email": "Email",
+      "agent-register-password": "Password",
+      "agent-register-telephoneNumber": "Numero di Telefono",
+      "agent-register-submit": "Invia"
+    }
+  }
+  

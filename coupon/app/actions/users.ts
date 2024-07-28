@@ -2,7 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { z } from "zod";
-import User from "../(models)/User";
+import User from "../[locale]/(models)/User";
 const bcrypt = require("bcrypt");
 
 const addSchema = z.object({
@@ -30,6 +30,12 @@ const editSchema = z.object({
 
 export async function getUser() {
   return await User.find();
+}
+
+export async function getUserDU(authDoctor: string) {
+  return await User.find({
+    authDoctor: authDoctor,
+  });
 }
 
 export async function addUser(prevState: unknown, formData: FormData) {
@@ -69,6 +75,4 @@ export async function editUser(prevState: unknown, formData: FormData) {
   const data = result.data;
 
   await User.updateOne({ email: data.email }, { $set: data });
-
-  redirect("/home/user");
 }
