@@ -73,7 +73,7 @@ export async function updateSession() {
   });
 }
 
-export function deleteSession() {
+export async function deleteSession() {
   cookies().delete("session");
   redirect(`/`);
 }
