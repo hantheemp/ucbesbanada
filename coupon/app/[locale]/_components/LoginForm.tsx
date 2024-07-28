@@ -63,7 +63,7 @@ export default function LoginForm() {
             className="btn btn-ghost font-bold"
             href={`/${locale}/register`}
           >
-            Don't Have An Account?
+            Do not Have An Account?
           </Link>
         </div>
       </form>

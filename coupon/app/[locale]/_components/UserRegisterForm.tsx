@@ -1,5 +1,3 @@
-"use client";
-
 import { useFormState } from "react-dom";
 import { registerByAgent } from "@/actions/register";
 
