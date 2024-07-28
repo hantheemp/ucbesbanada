@@ -1,9 +1,9 @@
 "use client";
 
 import { startTransition } from "react";
-import { deleteUser } from "@/actions/users";
+import { deleteUser } from "@/app/pages/actions/users";
 import { PiTrashBold } from "react-icons/pi";
-import { deleteTicket } from "@/actions/tickets";
+import { deleteTicket } from "@/app/pages/actions/tickets";
 import { useTranslations } from "next-intl";
 
 interface DeleteDropDownProps {

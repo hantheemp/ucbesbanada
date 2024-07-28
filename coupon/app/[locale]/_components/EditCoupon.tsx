@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useFormState } from "react-dom";
-import { editCoupon } from "@/actions/coupon";
+import { editCoupon } from "@/app/pages/actions/coupon";
 import Coupon from "./Coupon";
 import { useLocale, useTranslations } from "next-intl";
 

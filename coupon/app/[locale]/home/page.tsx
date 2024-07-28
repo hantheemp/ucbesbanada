@@ -4,7 +4,7 @@ import { useState, useEffect, ChangeEvent } from "react";
 
 import TicketCard from "../_components/TicketCard";
 import { useTranslations } from "next-intl";
-import { getTicket } from "@/actions/tickets";
+import { getTicket } from "@/app/pages/actions/tickets";
 
 interface Ticket {
   _id: string;

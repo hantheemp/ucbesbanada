@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useFormState } from "react-dom";
-import { createTicket } from "@/actions/tickets";
+import { createTicket } from "@/app/pages/actions/tickets";
 import { PiArrowBendDoubleUpLeftBold } from "react-icons/pi";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";

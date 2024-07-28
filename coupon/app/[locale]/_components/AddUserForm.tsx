@@ -1,6 +1,6 @@
 "use client";
 
-import { addUser } from "@/actions/users";
+import { addUser } from "@/app/pages/actions/users";
 import { useTranslations } from "next-intl";
 import { useFormState } from "react-dom";
 
