@@ -2,7 +2,7 @@
 
 import { useFormState } from "react-dom";
 import Link from "next/link";
-import { register } from "@/pages/actions/register";
+import { register } from "@/actions/register";
 import { useLocale } from "next-intl";
 
 export default function RegisterForm() {

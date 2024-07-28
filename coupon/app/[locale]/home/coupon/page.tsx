@@ -1,6 +1,6 @@
 
 import CouponCard from "@/app/[locale]/_components/CouponCard";
-import { getCoupon } from "@/pages/actions/coupon";
+import { getCoupon } from "@/actions/coupon";
 
 export default async function CouponManagement() {
   const coupons = await getCoupon();

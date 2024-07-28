@@ -1,7 +1,7 @@
 "use client"
 
 import { useFormState } from "react-dom";
-import { registerByAgent } from "@/pages/actions/register";
+import { registerByAgent } from "@/actions/register";
 
 export default function UserRegisterForm({
   params: { couponCode },

@@ -1,11 +1,12 @@
-import { getCookie } from "cookies-next";
+"use server"
+
 import User from "@/app/[locale]/(models)/User";
 
 export async function getAgent(id: string) {
   return User.findById(id);
 }
 
-export function getRelatedAgent(couponCode: string) {
+export async function getRelatedAgent(couponCode: string) {
   let parts = couponCode.split("%");
 
   let firstPart;

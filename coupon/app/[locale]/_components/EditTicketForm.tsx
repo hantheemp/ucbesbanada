@@ -1,7 +1,7 @@
 "use client";
 
 import { useFormState } from "react-dom";
-import { editTicket } from "@/pages/actions/tickets";
+import { editTicket } from "@/actions/tickets";
 import { useTranslations } from "use-intl";
 import { useLocale } from "next-intl";
 
