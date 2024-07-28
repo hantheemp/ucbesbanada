@@ -1,6 +1,5 @@
 "use client";
 
-import { getCookie } from "cookies-next";
 import { useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useTransition } from "react";
@@ -14,23 +13,20 @@ export default function LocalSwitcher({ type, id }: LocalSwitcherProps) {
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
   const localActive = useLocale();
-  const authDoctor = getCookie("authDoctor");
 
   const onSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const nextLocale = e.target.value;
     switch (type) {
       case "home":
         startTransition(() => {
-          router.replace(`/${nextLocale}/${type}`);
+          router.replace(`/${nextLocale}/home`);
         });
-      case "homeDoctor":
-        startTransition(() => {
-          router.replace(`/${nextLocale}/du/${authDoctor}`);
-        });
+        break;
       case "agent":
         startTransition(() => {
-          router.replace(`/${nextLocale}/${type}/${id}`);
+          router.replace(`/${nextLocale}/agent/${id}`);
         });
+        break;
     }
   };
   return (

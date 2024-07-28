@@ -2,7 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { z } from "zod";
-import User from "../[locale]/(models)/User";
+import User from "@/app/[locale]/(models)/User";
 import { createSession } from "./session";
 import { getCookie, getCookies, setCookie } from "cookies-next";
 import { cookies } from "next/headers";
@@ -49,7 +49,7 @@ export async function login(prevState: unknown, formData: FormData) {
     case "AU":
       redirect(`/${data.locale}/agent/${user._id}/`);
     case "DU":
-      redirect(`/${data.locale}/du/${user.authDoctor}/`);
+      redirect(`/${data.locale}/home`);
     case "ADMIN":
       redirect(`/${data.locale}/home/`);
     default:

@@ -2,7 +2,7 @@
 
 import { useFormState } from "react-dom";
 import Link from "next/link";
-import { registerByDoctor } from "@/app/actions/register";
+import { registerByDoctor } from "@/actions/register";
 import { useLocale } from "next-intl";
 
 export default function AgentRegisterForm({

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { PiDotsThreeOutlineVerticalBold } from "react-icons/pi";
 import { PiNotePencilBold } from "react-icons/pi";
 import DeleteDropDown from "./DeleteDropDown";
-import { getUser } from "@/app/actions/users";
+import { getUser } from "@/actions/users";
 import { getTranslations } from "next-intl/server";
 
 export default async function UserTable() {
@@ -48,7 +48,7 @@ export default async function UserTable() {
                   >
                     <li>
                       <Link href={`user/${user.id}/edit/`}>
-                      {translations("user-table-edit")}
+                        {translations("user-table-edit")}
                         <PiNotePencilBold />
                       </Link>
                       <DeleteDropDown id={user.id} type="USER" />

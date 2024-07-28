@@ -1,16 +1,14 @@
+import UserRegisterForm from "@/app/[locale]/_components/UserRegisterForm";
 import AgentRegisterForm from "../../_components/AgentRegisterForm";
 
-export default function RegisterByDoctor({
+export default async function RegisterByDoctor({
   params: { authDoctor },
 }: {
-  params: {
-    authDoctor: string;
-  };
+  params: { authDoctor: string };
 }) {
+  const params = {
+    authDoctor: authDoctor,
+  };
 
-  const userParams = {
-    authDoctor: authDoctor
-  }
-
-  return <AgentRegisterForm params={userParams} />;
+  return <AgentRegisterForm params={params} />;
 }

@@ -1,15 +1,13 @@
 import QRCode from "react-qr-code";
 import { useLocale, useTranslations } from "next-intl";
+import { cookies } from "next/headers";
 
-export default function DoctorQR({
-  params: { authDoctor },
-}: {
-  params: {
-    authDoctor: string;
-  };
-}) {
+export default function DoctorQR() {
+  const cookieStore = cookies();
+const authDoctor = cookieStore.get("authDoctor");
+console.log(authDoctor?.value)
   const value =
-    process.env.QR_REDIRECT + useLocale() + "/" + authDoctor + "/register";
+    process.env.QR_REDIRECT + useLocale() + "/" + authDoctor?.value + "/register";
   const translations = useTranslations("Agent");
   console.log(value);
 

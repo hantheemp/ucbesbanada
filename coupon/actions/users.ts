@@ -2,7 +2,9 @@
 
 import { redirect } from "next/navigation";
 import { z } from "zod";
-import User from "../[locale]/(models)/User";
+import User from "@/app/[locale]/(models)/User";
+import { getCookie } from "cookies-next";
+import { cookies } from "next/headers";
 const bcrypt = require("bcrypt");
 
 const addSchema = z.object({
@@ -29,12 +31,11 @@ const editSchema = z.object({
 });
 
 export async function getUser() {
-  return await User.find();
-}
-
-export async function getUserDU(authDoctor: string) {
+  const cookieStore = cookies();
+  const authDoctor = cookieStore.get("authDoctor");
+  console.log(authDoctor?.value);
   return await User.find({
-    authDoctor: authDoctor,
+    authDoctor: authDoctor?.value,
   });
 }
 

@@ -2,8 +2,9 @@
 
 import { redirect } from "next/navigation";
 import { z } from "zod";
-import Ticket from "../[locale]/(models)/Ticket";
+import Ticket from "@/app/[locale]/(models)/Ticket";
 import { getCookie } from "cookies-next";
+import { cookies } from "next/headers";
 
 const createSchema = z.object({
   id: z.string(),
@@ -17,26 +18,16 @@ const createSchema = z.object({
 });
 
 export async function getTicket(status: string) {
+  const cookieStore = cookies();
+  const authDoctor = cookieStore.get("authDoctor");
+  console.log(authDoctor?.value);
   switch (status) {
     case "PENDING":
-      return await Ticket.find({ status: "PENDING" });
+      return await Ticket.find({ status: "PENDING", authDoctor: authDoctor?.value });
     case "APPROVED":
-      return await Ticket.find({ status: "APPROVED" });
+      return await Ticket.find({ status: "APPROVED", authDoctor: authDoctor?.value });
     case "CANCELLED":
-      return await Ticket.find({ status: "CANCELLED" });
-    default:
-      throw new Error("Invalid status");
-  }
-}
-
-export async function getTicketDU(status: string, authDoctor : string) {
-  switch (status) {
-    case "PENDING":
-      return await Ticket.find({ status: "PENDING", authDoctor: authDoctor });
-    case "APPROVED":
-      return await Ticket.find({ status: "APPROVED", authDoctor: authDoctor });
-    case "CANCELLED":
-      return await Ticket.find({ status: "CANCELLED", authDoctor: authDoctor });
+      return await Ticket.find({ status: "CANCELLED", authDoctor: authDoctor?.value });
     default:
       throw new Error("Invalid status");
   }
@@ -59,7 +50,7 @@ export async function createTicket(prevState: unknown, formData: FormData) {
     withdrawAmount: data.withdrawAmount,
     description: data.description,
     status: "PENDING",
-    authDoctor : authDoctor,
+    authDoctor: authDoctor,
   });
 
   redirect(`/${data.locale}/agent/${data.id}`);

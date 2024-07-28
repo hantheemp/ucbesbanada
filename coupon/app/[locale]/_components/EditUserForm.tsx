@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { editUser } from "@/app/actions/users";
+import { editUser } from "@/actions/users";
 import React from "react";
 import { useFormState } from "react-dom";
 

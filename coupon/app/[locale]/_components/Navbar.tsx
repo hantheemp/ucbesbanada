@@ -43,9 +43,9 @@ export function Navbar() {
             </Link>
           </li>
         </ul>
-        <button className="btn btn-ghost">
+        <Link className="btn btn-ghost" href={`/${localeActive}/`}>
           <PiPowerBold></PiPowerBold>
-        </button>
+        </Link>
       </div>
     </div>
   );

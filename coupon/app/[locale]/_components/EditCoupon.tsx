@@ -2,9 +2,9 @@
 
 import React from "react";
 import { useFormState } from "react-dom";
-import { editCoupon } from "@/app/actions/coupon";
+import { editCoupon } from "@/actions/coupon";
 import Coupon from "./Coupon";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 export default function EditCouponForm({
   params: { id, name, surname, couponCode, pointsGained },
@@ -17,8 +17,9 @@ export default function EditCouponForm({
     pointsGained: number;
   };
 }) {
-  const translations = useTranslations("Coupon")
+  const translations = useTranslations("Coupon");
   const [error, action] = useFormState(editCoupon, {});
+  const locale = useLocale();
 
   function splitCommission(couponCode: string) {
     let parts = couponCode.split("%");
@@ -95,7 +96,7 @@ export default function EditCouponForm({
           </label>
           <label className="form-control w-full max-w-xs">
             <label className="mb-2" htmlFor="commission">
-            {translations("coupon-edit-commission")}
+              {translations("coupon-edit-commission")}
             </label>
             <input
               type="number"
@@ -111,7 +112,7 @@ export default function EditCouponForm({
           </label>
           <label className="form-control w-full max-w-xs">
             <label className="mb-2" htmlFor="cost">
-            {translations("coupon-edit-cost")}
+              {translations("coupon-edit-cost")}
             </label>
             <input
               type="number"
@@ -127,7 +128,7 @@ export default function EditCouponForm({
           </label>
           <label className="form-control w-full max-w-xs">
             <label className="mb-2" htmlFor="pointsGained">
-            {translations("coupon-edit-pointsGained")}
+              {translations("coupon-edit-pointsGained")}
             </label>
             <input
               type="number"
@@ -141,8 +142,21 @@ export default function EditCouponForm({
               <div className="text-desctructive">{error.pointsGained}</div>
             )}
           </label>
+          <label hidden={true} className="form-control w-full max-w-xs">
+            <input
+              type="text"
+              placeholder="Points"
+              className="input input-bordered w-full max-w-xs mb-2"
+              id="locale"
+              name="locale"
+              defaultValue={locale}
+              hidden={true}
+            />
+          </label>
           <button type="submit" className="btn btn-ghost font-bold">
-            <label className="text-l">{translations("coupon-edit-submit")}</label>
+            <label className="text-l">
+              {translations("coupon-edit-submit")}
+            </label>
           </button>
         </div>
       </form>

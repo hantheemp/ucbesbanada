@@ -1,16 +1,8 @@
 import { getCookie } from "cookies-next";
-import User from "../[locale]/(models)/User";
+import User from "@/app/[locale]/(models)/User";
 
 export async function getAgent(id: string) {
   return User.findById(id);
-}
-
-export async function getAgentDU(id: string) {
-  const authDoctor = getCookie("authDoctor");
-  return User.find({
-    _id: id,
-    authDoctor: authDoctor,
-  });
 }
 
 export function getRelatedAgent(couponCode: string) {

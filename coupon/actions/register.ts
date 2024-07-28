@@ -2,7 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { z } from "zod";
-import User from "../[locale]/(models)/User";
+import User from "@/app/[locale]/(models)/User";
 import { createSession } from "./session";
 const bcrypt = require("bcrypt");
 
@@ -77,15 +77,15 @@ export async function registerByDoctor(prevState: unknown, formData: FormData) {
     email: data.email,
     password: hashedPassword,
     telephone: data.telephone,
-    roleFilter: "U",
+    roleFilter: "AU",
     couponCode: data.couponCode,
     pointsGained: 0,
+    authDoctor: data.authDoctor,
   });
 
   await newUser.save();
   await createSession(newUser._id, data.locale);
-  redirect(`/${data.locale}/login`)
-
+  redirect(`/${data.locale}/login`);
 }
 
 export async function registerByAgent(prevState: unknown, formData: FormData) {
