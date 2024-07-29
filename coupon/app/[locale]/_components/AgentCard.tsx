@@ -29,16 +29,18 @@ export default function AgentCard({
     pointsGained: number;
   };
 }) {
-  const value = process.env.QR_REDIRECT + "register/"+ couponCode;
-  console.log(value)
-  const translations = useTranslations("Agent");
   const locale = useLocale();
+  const value = process.env.QR_REDIRECT + locale + "/register/" + couponCode; 
+  const translations = useTranslations("Agent");
 
   return (
     <div className="font-bold text-center">
       <div className="flex justify-center navbar bg-base-300 font-bold">
         <LocalSwitcher type="agent" id={id}></LocalSwitcher>
-        <Link className="btn btn-ghost font-bold" href={`/${locale}/payment/${id}`}>
+        <Link
+          className="btn btn-ghost font-bold"
+          href={`/${locale}/payment/${id}`}
+        >
           {translations("agent-paymentRequest")}
         </Link>
         <Link className="btn btn-ghost" href="/">

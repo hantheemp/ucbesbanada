@@ -2,6 +2,7 @@
 
 import { useFormState } from "react-dom";
 import { registerByAgent } from "@/app/pages/actions/register";
+import { useLocale } from "next-intl";
 
 export default function UserRegisterForm({
   params: { couponCode },
@@ -12,6 +13,7 @@ export default function UserRegisterForm({
 }) {
 
   const [error, action] = useFormState(registerByAgent, {});
+  const locale = useLocale();
 
   return (
     <div className="flex justify-center items-center h-screen">
@@ -82,6 +84,20 @@ export default function UserRegisterForm({
             id="couponCode"
             name="couponCode"
             defaultValue={couponCode}
+            hidden={true}
+          />
+          {error?.telephone && (
+            <div className="text-destructive">{error.telephone}</div>
+          )}
+        </div>
+        <div className="form-control w-full max-w-xs mb-2">
+          <input
+            type="text"
+            placeholder="Coupon Code"
+            className="input input-bordered w-full max-w-xs"
+            id="locale"
+            name="locale"
+            defaultValue={locale}
             hidden={true}
           />
           {error?.telephone && (

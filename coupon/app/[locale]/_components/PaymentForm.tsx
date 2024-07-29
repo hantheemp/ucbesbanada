@@ -6,9 +6,11 @@ import { createTicket } from "@/app/pages/actions/tickets";
 import { PiArrowBendDoubleUpLeftBold } from "react-icons/pi";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
+import { cookies } from "next/headers";
 
 export default function PaymentForm({
   params: { id, name, surname, pointsGained },
+  authDoctor,
 }: {
   params: {
     id: string;
@@ -16,9 +18,10 @@ export default function PaymentForm({
     surname: string;
     pointsGained: number;
   };
+  authDoctor: string | undefined;
 }) {
   const [error, action] = useFormState(createTicket, {});
-  const translations = useTranslations("Agent")
+  const translations = useTranslations("Agent");
   const pointsString = pointsGained + " ";
   const locale = useLocale();
 
@@ -59,7 +62,7 @@ export default function PaymentForm({
         </label>
         <label className="form-control w-full max-w-xs">
           <label className="mb-2" htmlFor="surname">
-          {translations("agent-paymentRequest-surname")}
+            {translations("agent-paymentRequest-surname")}
           </label>
           <input
             type="text"
@@ -75,7 +78,7 @@ export default function PaymentForm({
         </label>
         <label className="form-control w-full max-w-xs">
           <label className="mb-2" htmlFor="iban">
-          {translations("agent-paymentRequest-iban")}
+            {translations("agent-paymentRequest-iban")}
           </label>
           <input
             type="text"
@@ -88,7 +91,7 @@ export default function PaymentForm({
         </label>
         <label className="form-control w-full max-w-xs">
           <label className="mb-2" htmlFor="withdrawAmount">
-          {translations("agent-paymentRequest-withdrawAmount")}
+            {translations("agent-paymentRequest-withdrawAmount")}
           </label>
           <input
             type="number"
@@ -99,10 +102,11 @@ export default function PaymentForm({
             defaultValue={pointsGained}
           />
           {error.iban && <div className="text-desctructive">{error.iban}</div>}
+          {<div>Max: {pointsGained}</div>}
         </label>
         <label className="form-control w-full max-w-xs">
           <label className="mb-2" htmlFor="description">
-          {translations("agent-paymentRequest-note")}
+            {translations("agent-paymentRequest-note")}
           </label>
           <input
             type="text"
@@ -147,12 +151,30 @@ export default function PaymentForm({
             <div className="text-desctructive">{error.status}</div>
           )}
         </label>
+        <label className="form-control w-full max-w-xs">
+          <label hidden={true} className="mb-2" htmlFor="locale">
+            AuthDoctor
+          </label>
+          <input
+            hidden={true}
+            type="text"
+            className="input input-bordered w-full max-w-xs mb-2"
+            id="authDoctor"
+            name="authDoctor"
+            defaultValue={authDoctor}
+          />
+          {error.status && (
+            <div className="text-desctructive">{error.status}</div>
+          )}
+        </label>
         <div>
           <Link className="btn btn-ghost" href={`/${locale}/agent/${id}`}>
             <PiArrowBendDoubleUpLeftBold></PiArrowBendDoubleUpLeftBold>
           </Link>
           <button type="submit" className="btn btn-ghost font-bold">
-            <label className="text-l">{translations("agent-register-submit")}</label>
+            <label className="text-l">
+              {translations("agent-register-submit")}
+            </label>
           </button>
         </div>
       </div>

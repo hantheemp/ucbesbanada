@@ -31,6 +31,7 @@ export async function register(prevState: unknown, formData: FormData) {
 
   if (existingUser) {
     console.log("This email is already in use!");
+    redirect(`/${data.locale}/login`);
   }
 
   const hashedPassword = await bcrypt.hash(data.password, 10);
@@ -48,6 +49,7 @@ export async function register(prevState: unknown, formData: FormData) {
   });
 
   await newUser.save();
+  redirect(`/${data.locale}/login`);
 }
 
 export async function registerByDoctor(prevState: unknown, formData: FormData) {
@@ -65,6 +67,7 @@ export async function registerByDoctor(prevState: unknown, formData: FormData) {
 
   if (existingUser) {
     console.log("This email is already in use!");
+    redirect(`/${data.locale}/login`);
   }
 
   const hashedPassword = await bcrypt.hash(data.password, 10);
@@ -76,7 +79,7 @@ export async function registerByDoctor(prevState: unknown, formData: FormData) {
     password: hashedPassword,
     telephone: data.telephone,
     roleFilter: "AU",
-    couponCode: data.couponCode,
+    couponCode: "None%0",
     pointsGained: 0,
     authDoctor: data.authDoctor,
   });
@@ -98,7 +101,10 @@ export async function registerByAgent(prevState: unknown, formData: FormData) {
     email: data.email,
   });
 
-  if (existingUser) return { email: ["Email is already in use!"] };
+  if (existingUser) {
+    console.log("This email is already in use!");
+    redirect(`/${data.locale}/register/thanks`);
+  }
 
   const hashedPassword = await bcrypt.hash(data.password, 10);
 
@@ -115,5 +121,5 @@ export async function registerByAgent(prevState: unknown, formData: FormData) {
 
   await newUser.save();
 
-  redirect("/register/thanks");
+  redirect(`/${data.locale}/register/thanks`);
 }

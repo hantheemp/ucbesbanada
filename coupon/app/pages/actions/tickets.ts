@@ -15,6 +15,7 @@ const createSchema = z.object({
   description: z.string(),
   status: z.string(),
   locale: z.string().optional(),
+  authDoctor: z.string().optional(),
 });
 
 export async function getTicket(status: string) {
@@ -23,11 +24,20 @@ export async function getTicket(status: string) {
   console.log(authDoctor?.value);
   switch (status) {
     case "PENDING":
-      return await Ticket.find({ status: "PENDING", authDoctor: authDoctor?.value });
+      return await Ticket.find({
+        status: "PENDING",
+        authDoctor: authDoctor?.value,
+      });
     case "APPROVED":
-      return await Ticket.find({ status: "APPROVED", authDoctor: authDoctor?.value });
+      return await Ticket.find({
+        status: "APPROVED",
+        authDoctor: authDoctor?.value,
+      });
     case "CANCELLED":
-      return await Ticket.find({ status: "CANCELLED", authDoctor: authDoctor?.value });
+      return await Ticket.find({
+        status: "CANCELLED",
+        authDoctor: authDoctor?.value,
+      });
     default:
       throw new Error("Invalid status");
   }
@@ -41,7 +51,6 @@ export async function createTicket(prevState: unknown, formData: FormData) {
   }
 
   const data = result.data;
-  const authDoctor = getCookie("authDoctor") + "";
 
   await Ticket.create({
     name: data.name,
@@ -50,7 +59,7 @@ export async function createTicket(prevState: unknown, formData: FormData) {
     withdrawAmount: data.withdrawAmount,
     description: data.description,
     status: "PENDING",
-    authDoctor: authDoctor,
+    authDoctor: data.authDoctor,
   });
 
   redirect(`/${data.locale}/agent/${data.id}`);

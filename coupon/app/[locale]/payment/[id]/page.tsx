@@ -1,5 +1,6 @@
 import User from "@/app/[locale]/(models)/User";
 import PaymentForm from "@/app/[locale]/_components/PaymentForm";
+import { cookies } from "next/headers";
 
 export default async function PaymentPage({
   params: { id },
@@ -7,6 +8,8 @@ export default async function PaymentPage({
   params: { id: string };
 }) {
   const user = await User.findById(id);
+  const cookieStore = cookies();
+  const authDoctor = cookieStore.get("authDoctor");
 
   const userParams = {
     id: user.id,
@@ -20,5 +23,5 @@ export default async function PaymentPage({
     pointsGained: user.pointsGained,
   };
 
-  return <PaymentForm params={userParams}></PaymentForm>;
+  return <PaymentForm params={userParams} authDoctor={authDoctor?.value}></PaymentForm>;
 }
