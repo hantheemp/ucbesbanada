@@ -1,6 +1,5 @@
 import User from "@/app/[locale]/(models)/User";
 import EditCouponForm from "@/app/[locale]/_components/EditCoupon";
-import { getRelatedAgent } from "@/app/pages/actions/agent";
 
 export default async function EditUser({
   params: { id },

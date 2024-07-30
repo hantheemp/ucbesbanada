@@ -14,7 +14,6 @@ const addSchema = z.object({
   password: z.string().min(8),
   telephone: z.string().min(11),
   roleFilter: z.string().min(1).max(2),
-  couponCode: z.string().min(5).max(20),
   pointsGained: z.coerce.number().int(),
 });
 
@@ -55,7 +54,6 @@ export async function addUser(prevState: unknown, formData: FormData) {
     password: hashedPassword,
     telephone: data.telephone,
     roleFilter: data.roleFilter,
-    couponCode: data.couponCode,
     pointsGained: data.pointsGained,
   });
 

@@ -21,32 +21,6 @@ export default function EditCouponForm({
   const [error, action] = useFormState(editCoupon, {});
   const locale = useLocale();
 
-  function splitCommission(couponCode: string) {
-    let parts = couponCode.split("%");
-
-    let firstPart;
-
-    let secondPart;
-
-    if (parts.length === 2) {
-      firstPart = parts[0];
-      secondPart = parts[1];
-    }
-
-    const agentNameAndCommission = {
-      agentName: firstPart,
-      agentCommission: secondPart,
-    };
-
-    return agentNameAndCommission;
-  }
-
-  const agentInfo = splitCommission(couponCode);
-
-  const agentCommission = agentInfo.agentCommission;
-
-  console.log(agentCommission);
-
   return (
     <div>
       <Coupon
@@ -82,30 +56,15 @@ export default function EditCouponForm({
             <label className="mb-2" htmlFor="couponCode">
               {translations("coupon-edit-couponCode")}
             </label>
-            <input
-              type="text"
-              placeholder="Coupon Code"
-              className="input input-bordered w-full max-w-xs mb-2"
-              id="couponCode"
-              name="couponCode"
-              defaultValue={couponCode}
-            />
-            {error.couponCode && (
-              <div className="text-desctructive">{error.couponCode}</div>
-            )}
-          </label>
-          <label className="form-control w-full max-w-xs">
-            <label className="mb-2" htmlFor="commission">
-              {translations("coupon-edit-commission")}
-            </label>
-            <input
-              type="number"
-              placeholder="Commission"
-              className="input input-bordered w-full max-w-xs mb-2"
-              id="commission"
-              name="commission"
-              defaultValue={agentCommission}
-            />
+            <select defaultValue={couponCode} id="couponCode" name="couponCode">
+              <option value={name + "%" + "IRON"}>{name + " " + surname + " Rank:"}IRON (2.5%)</option>
+              <option value={name + "%" + "BRONZE"}>{name + " " + surname + " Rank:"}BRONZE (5.0%)</option>
+              <option value={name + "%" + "SILVER"}>{name + " " + surname + " Rank:"}SILVER (7.5%)</option>
+              <option value={name + "%" + "GOLD"}>{name + " " + surname + " Rank:"}GOLD (10.0%)</option>
+              <option value={name + "%" + "EMERALD"}>{name + " " + surname + " Rank:"}EMERALD (12.5%)</option>
+              <option value={name + "%" + "DIAMOND"}>{name + " " + surname + " Rank:"}DIAMOND (15.0%)</option>
+              <option value={name + "%" + "MASTER"}>{name + " " + surname + " Rank:"}MASTER (20.0%)</option>
+            </select>
             {error.couponCode && (
               <div className="text-desctructive">{error.couponCode}</div>
             )}
@@ -120,7 +79,6 @@ export default function EditCouponForm({
               className="input input-bordered w-full max-w-xs mb-2"
               id="cost"
               name="cost"
-              defaultValue={pointsGained}
             />
             {error.pointsGained && (
               <div className="text-desctructive">{error.pointsGained}</div>
@@ -145,7 +103,7 @@ export default function EditCouponForm({
           <label hidden={true} className="form-control w-full max-w-xs">
             <input
               type="text"
-              placeholder="Points"
+              placeholder="tr"
               className="input input-bordered w-full max-w-xs mb-2"
               id="locale"
               name="locale"

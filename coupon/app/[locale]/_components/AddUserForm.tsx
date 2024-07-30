@@ -102,21 +102,6 @@ export default function AddUserForm() {
           )}
         </label>
         <label className="form-control w-full max-w-xs">
-          <label className="mb-2" htmlFor="couponCode">
-          {translations("user-add-couponCode")}
-          </label>
-          <input
-            type="text"
-            placeholder="JOHN10"
-            className="input input-bordered w-full max-w-xs mb-2"
-            id="couponCode"
-            name="couponCode"
-          />
-          {error.couponCode && (
-            <div className="text-destructive">{error.couponCode}</div>
-          )}
-        </label>
-        <label className="form-control w-full max-w-xs">
           <label className="mb-2" htmlFor="pointsGained">
           {translations("user-add-pointsGained")}
           </label>

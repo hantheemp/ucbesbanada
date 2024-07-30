@@ -4,17 +4,13 @@ import { PiNotePencilBold } from "react-icons/pi";
 import DeleteDropDown from "./DeleteDropDown";
 import { getUser } from "@/app/pages/actions/users";
 import { getTranslations } from "next-intl/server";
-import UserTableMobile from "./UserTableMobile";
 
 export default async function UserTable() {
   const users = await getUser();
   const translations = await getTranslations("User");
 
   return (
-    <div className="text-center justify-center items-center">
-      <Link className="btn btn-ghost" href="user/new">
-        {translations("user-add")}
-      </Link>
+    <div className="text-center justify-center items-center p-6">
       <table className="table table-xs">
         <thead>
           <tr>
