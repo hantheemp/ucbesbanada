@@ -1,11 +1,19 @@
+"use client"
+
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { PiPowerBold } from "react-icons/pi";
 import LocalSwitcher from "./LocalSwitcher";
+import { useMediaQuery } from 'usehooks-ts'
+import { NavbarMobile } from "./NavbarMobile";
 
 export function Navbar() {
   const localeActive = useLocale();
   const translations = useTranslations("Home");
+  const matches = useMediaQuery("(max-width: 768px)");
+
+  if (matches)
+    return <NavbarMobile></NavbarMobile>
 
   return (
     <div className="navbar bg-base-300 font-bold">

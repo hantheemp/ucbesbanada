@@ -4,9 +4,8 @@ import { PiNotePencilBold } from "react-icons/pi";
 import DeleteDropDown from "./DeleteDropDown";
 import { getUser } from "@/app/pages/actions/users";
 import { getTranslations } from "next-intl/server";
-import UserTableMobile from "./UserTableMobile";
 
-export default async function UserTable() {
+export default async function UserTableMobile() {
   const users = await getUser();
   const translations = await getTranslations("User");
 
@@ -15,11 +14,13 @@ export default async function UserTable() {
       <Link className="btn btn-ghost" href="user/new">
         {translations("user-add")}
       </Link>
-      <table className="table table-xs">
+      <table className="table">
         <thead>
           <tr>
             <th>{translations("user-table-name")}</th>
             <th>{translations("user-table-surname")}</th>
+            <th>{translations("user-table-email")}</th>
+            <th>{translations("user-table-telephoneNumber")}</th>
             <th>{translations("user-table-roleFilter")}</th>
             <th>{translations("user-table-couponCode")}</th>
             <th>{translations("user-table-pointsGained")}</th>
@@ -31,6 +32,8 @@ export default async function UserTable() {
             <tr key={user.id}>
               <td>{user.name}</td>
               <td>{user.surname}</td>
+              <td>{user.email}</td>
+              <td>{user.telephone}</td>
               <td>{user.roleFilter}</td>
               <td>{user.couponCode}</td>
               <td>{user.pointsGained}</td>
