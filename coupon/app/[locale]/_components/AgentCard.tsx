@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PiPowerBold } from "react-icons/pi";
 import { useLocale, useTranslations } from "next-intl";
 import LocalSwitcher from "./LocalSwitcher";
+import { cookies } from "next/headers";
 
 export default function AgentCard({
   params: {
@@ -29,8 +30,11 @@ export default function AgentCard({
     pointsGained: number;
   };
 }) {
+  const cookieStore = cookies();
+  const authDoctor = cookieStore.get("authDoctor");
   const locale = useLocale();
-  const value = process.env.QR_REDIRECT + locale + "/register/" + couponCode; 
+  const value = process.env.QR_REDIRECT + locale + "/register/" + couponCode + "/" + authDoctor?.value;
+  console.log(value)
   const translations = useTranslations("Agent");
 
   return (

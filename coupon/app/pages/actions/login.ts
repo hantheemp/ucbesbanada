@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 import User from "@/app/[locale]/(models)/User";
 import { cookies } from "next/headers";
+import { createSession, verifySession } from "./session";
 const bcrypt = require("bcrypt");
 
 const loginSchema = z.object({
@@ -13,6 +14,8 @@ const loginSchema = z.object({
 });
 
 export async function login(prevState: unknown, formData: FormData) {
+  const isVerified = await verifySession();
+
   const result = loginSchema.safeParse(Object.fromEntries(formData));
 
   if (result.success === false) return result.error.formErrors.fieldErrors;
@@ -41,18 +44,5 @@ export async function login(prevState: unknown, formData: FormData) {
     httpOnly: false,
     secure: false,
   });
-
-  switch (user.roleFilter) {
-    case "U":
-      redirect(`/${data.locale}/user/`);
-    case "AU":
-      redirect(`/${data.locale}/agent/${user._id}/`);
-    case "DU":
-      redirect(`/${data.locale}/home`);
-    case "ADMIN":
-      redirect(`/${data.locale}/home/`);
-    default:
-      console.error("Unknown roleFilter:", user.roleFilter);
-      return;
-  }
+  await createSession(user._id, user.roleFilter);
 }

@@ -1,13 +1,14 @@
 import UserRegisterForm from "@/app/[locale]/_components/UserRegisterForm";
 
 export default async function UserRegister({
-  params: { couponCode },
+  params: { couponCode, authDoctor },
 }: {
-  params: { couponCode: string };
+  params: { couponCode: string, authDoctor : string };
 }) {
 
   const params = {
-    couponCode : couponCode
+    couponCode : couponCode,
+    authDoctor : authDoctor
   }
 
   return <UserRegisterForm params={params}/>;

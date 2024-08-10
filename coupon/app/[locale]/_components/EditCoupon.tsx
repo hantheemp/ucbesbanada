@@ -57,13 +57,13 @@ export default function EditCouponForm({
               {translations("coupon-edit-couponCode")}
             </label>
             <select defaultValue={couponCode} id="couponCode" name="couponCode">
-              <option value={name + "%" + "IRON"}>{name + " " + surname + " Rank:"}IRON (2.5%)</option>
-              <option value={name + "%" + "BRONZE"}>{name + " " + surname + " Rank:"}BRONZE (5.0%)</option>
-              <option value={name + "%" + "SILVER"}>{name + " " + surname + " Rank:"}SILVER (7.5%)</option>
-              <option value={name + "%" + "GOLD"}>{name + " " + surname + " Rank:"}GOLD (10.0%)</option>
-              <option value={name + "%" + "EMERALD"}>{name + " " + surname + " Rank:"}EMERALD (12.5%)</option>
-              <option value={name + "%" + "DIAMOND"}>{name + " " + surname + " Rank:"}DIAMOND (15.0%)</option>
-              <option value={name + "%" + "MASTER"}>{name + " " + surname + " Rank:"}MASTER (20.0%)</option>
+              <option value={name + "-" + "IRON"}>{name + " " + surname + " Rank:"}IRON (2.5%)</option>
+              <option value={name + "-" + "BRONZE"}>{name + " " + surname + " Rank:"}BRONZE (5.0%)</option>
+              <option value={name + "-" + "SILVER"}>{name + " " + surname + " Rank:"}SILVER (7.5%)</option>
+              <option value={name + "-" + "GOLD"}>{name + " " + surname + " Rank:"}GOLD (10.0%)</option>
+              <option value={name + "-" + "EMERALD"}>{name + " " + surname + " Rank:"}EMERALD (12.5%)</option>
+              <option value={name + "-" + "DIAMOND"}>{name + " " + surname + " Rank:"}DIAMOND (15.0%)</option>
+              <option value={name + "-" + "MASTER"}>{name + " " + surname + " Rank:"}MASTER (20.0%)</option>
             </select>
             {error.couponCode && (
               <div className="text-desctructive">{error.couponCode}</div>

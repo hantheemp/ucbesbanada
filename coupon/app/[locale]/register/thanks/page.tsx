@@ -1,5 +1,4 @@
-export default function ThanksForRegistering(){
+export default function ThanksForRegistering() {
 
-    return <h1>Thanks for registering!</h1>
-
+  return <h1>Thanks for registering!</h1>;
 }

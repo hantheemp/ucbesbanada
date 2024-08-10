@@ -1,3 +1,7 @@
-export default function UserProfile(){
-    return <h1>User Profile</h1>
+import { sendEmail } from "@/app/pages/actions/sendEmail";
+
+export default function UserProfile() {
+  sendEmail();
+
+  return <h1>User Profile</h1>;
 }

@@ -5,10 +5,10 @@ import { registerByAgent } from "@/app/pages/actions/register";
 import { useLocale } from "next-intl";
 
 export default function UserRegisterForm({
-  params: { couponCode },
+  params: { couponCode, authDoctor },
 }: {
   params: {
-    couponCode: string;
+    couponCode: string, authDoctor : string;
   };
 }) {
 
@@ -103,6 +103,17 @@ export default function UserRegisterForm({
           {error?.telephone && (
             <div className="text-destructive">{error.telephone}</div>
           )}
+        </div>
+        <div className="form-control w-full max-w-xs mb-2">
+          <input
+            type="text"
+            placeholder="Coupon Code"
+            className="input input-bordered w-full max-w-xs"
+            id="authDoctor"
+            name="authDoctor"
+            defaultValue={authDoctor}
+            hidden={false}
+          />
         </div>
         <div className="flex flex-col items-center">
           <button type="submit" className="btn btn-ghost font-bold">
