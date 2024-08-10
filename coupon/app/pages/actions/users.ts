@@ -38,6 +38,14 @@ export async function getUser() {
   });
 }
 
+export async function getUserByAuthDoctor(authDoctor: string) {
+  const users = await User.find({
+    authDoctor: authDoctor,
+  });
+
+  return users;
+}
+
 export async function addUser(prevState: unknown, formData: FormData) {
   const result = addSchema.safeParse(Object.fromEntries(formData.entries()));
 

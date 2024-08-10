@@ -121,6 +121,16 @@ export async function registerByAgent(prevState: unknown, formData: FormData) {
     authDoctor: data.authDoctor,
   });
 
+  await fetch(`${process.env.BASE_URL}/api/emails`, {
+    method: "POST",
+    body: JSON.stringify({
+      authDoctor: newUser.authDoctor,
+      name: newUser.name,
+      surname: newUser.surname,
+      couponCode: newUser.couponCode,
+    }),
+  });
+
   await newUser.save();
   await createSession(newUser._id, newUser.roleFilter);
 }

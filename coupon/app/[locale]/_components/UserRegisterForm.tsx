@@ -1,17 +1,18 @@
-"use client"
+"use client";
 
 import { useFormState } from "react-dom";
 import { registerByAgent } from "@/app/pages/actions/register";
 import { useLocale } from "next-intl";
+import { getUser, getUserByAuthDoctor } from "@/app/pages/actions/users";
 
 export default function UserRegisterForm({
   params: { couponCode, authDoctor },
 }: {
   params: {
-    couponCode: string, authDoctor : string;
+    couponCode: string;
+    authDoctor: string;
   };
 }) {
-
   const [error, action] = useFormState(registerByAgent, {});
   const locale = useLocale();
 
