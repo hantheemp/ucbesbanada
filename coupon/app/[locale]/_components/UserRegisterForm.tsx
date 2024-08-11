@@ -3,7 +3,6 @@
 import { useFormState } from "react-dom";
 import { registerByAgent } from "@/app/pages/actions/register";
 import { useLocale } from "next-intl";
-import { getUser, getUserByAuthDoctor } from "@/app/pages/actions/users";
 
 export default function UserRegisterForm({
   params: { couponCode, authDoctor },

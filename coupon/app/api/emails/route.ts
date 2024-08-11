@@ -7,7 +7,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
   try {
-    const { authDoctor, name, surname, couponCode } = await request.json();
+    const { authDoctor, name, surname, telephone, couponCode } = await request.json();
     const users = await getUserByAuthDoctor(authDoctor);
 
     let emailResults: any[] = [];
@@ -18,7 +18,7 @@ export async function POST(request: Request) {
           from: "bilgi@ucbesbanada.com",
           to: user.email,
           subject: "Hasta Bilgilendirmesi Hk.",
-          react: UserEmail({ name, surname, couponCode }),
+          react: UserEmail({ name, surname, telephone, couponCode }),
         });
 
         emailResults.push(data);

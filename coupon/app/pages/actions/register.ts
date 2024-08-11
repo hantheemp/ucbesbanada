@@ -121,16 +121,20 @@ export async function registerByAgent(prevState: unknown, formData: FormData) {
     authDoctor: data.authDoctor,
   });
 
+  console.log(data.couponCode)
+
   await fetch(`${process.env.BASE_URL}/api/emails`, {
     method: "POST",
     body: JSON.stringify({
       authDoctor: newUser.authDoctor,
       name: newUser.name,
       surname: newUser.surname,
+      telephone: newUser.telephone,
       couponCode: newUser.couponCode,
     }),
   });
 
-  await newUser.save();
+  // For security issues, we are not saving the new patients to the database.
+  // await newUser.save();
   await createSession(newUser._id, newUser.roleFilter);
 }
