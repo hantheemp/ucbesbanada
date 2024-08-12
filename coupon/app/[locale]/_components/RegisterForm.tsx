@@ -85,7 +85,7 @@ export default function RegisterForm() {
           <button type="submit" className="btn btn-ghost font-bold">
             Submit
           </button>
-          <Link className="btn btn-ghost font-bold" href="/login">
+          <Link className="btn btn-ghost font-bold" href="/tr/login">
             Already Have An Account?
           </Link>
         </div>
