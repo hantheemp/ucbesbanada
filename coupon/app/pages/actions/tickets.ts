@@ -21,7 +21,7 @@ const createSchema = z.object({
 export async function getTicket(status: string) {
   const cookieStore = cookies();
   const authDoctor = cookieStore.get("authDoctor");
-  console.log(authDoctor?.value);
+
   switch (status) {
     case "PENDING":
       return await Ticket.find({

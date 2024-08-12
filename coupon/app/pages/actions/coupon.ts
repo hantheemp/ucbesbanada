@@ -16,7 +16,7 @@ const editSchema = z.object({
 export async function getCoupon() {
   const cookieStore = cookies();
   const authDoctor = cookieStore.get("authDoctor");
-  console.log(authDoctor?.value);
+
   return User.find({
     authDoctor: authDoctor?.value,
   });
@@ -30,11 +30,9 @@ export async function editCoupon(prevState: unknown, formData: FormData) {
   const result = editSchema.safeParse(Object.fromEntries(formData));
 
   if (result.success === false) {
-    console.log(result.error.formErrors.fieldErrors);
     return result.error.formErrors.fieldErrors;
   }
 
-  console.log(result.data)
   const data = result.data;
 
   let parts = data.couponCode.split("%");

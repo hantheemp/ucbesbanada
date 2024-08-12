@@ -4,10 +4,10 @@ import { useFormState } from "react-dom";
 import Link from "next/link";
 import { useLocale } from "next-intl";
 import { login } from "@/app/pages/actions/login";
-import { verifySession } from "@/app/pages/actions/session";
+import { sendEmailToReset } from "@/app/pages/actions/forgotpass";
 
-export default function LoginForm() {
-  const [error, action] = useFormState(login, {});
+export default function ForgotPasswordForm() {
+  const [error, action] = useFormState(sendEmailToReset, {});
   const locale = useLocale();
 
   return (
@@ -23,18 +23,6 @@ export default function LoginForm() {
           />
           {error?.email && (
             <div className="text-destructive">{error.email}</div>
-          )}
-        </div>
-        <div className="form-control w-full max-w-xs mb-2">
-          <input
-            type="password"
-            placeholder="Password"
-            className="input input-bordered w-full max-w-xs"
-            id="password"
-            name="password"
-          />
-          {error?.password && (
-            <div className="text-destructive">{error.password}</div>
           )}
         </div>
         <div hidden={true} className="form-control w-full max-w-xs mb-2">
@@ -54,15 +42,9 @@ export default function LoginForm() {
           </button>
           <Link
             className="btn btn-ghost font-bold"
-            href={`/${locale}/reset`}
-          >
-            Forgot Password?
-          </Link>
-          <Link
-            className="btn btn-ghost font-bold"
             href={`/${locale}/register`}
           >
-            Do not Have An Account?
+            Already Have An Account?
           </Link>
         </div>
       </form>

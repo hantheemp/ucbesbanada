@@ -33,8 +33,13 @@ export default function AgentCard({
   const cookieStore = cookies();
   const authDoctor = cookieStore.get("authDoctor");
   const locale = useLocale();
-  const value = process.env.QR_REDIRECT + locale + "/register/" + couponCode + "/" + authDoctor?.value;
-  console.log(value)
+  const value =
+    process.env.QR_REDIRECT +
+    locale +
+    "/register/" +
+    couponCode +
+    "/" +
+    authDoctor?.value;
   const translations = useTranslations("Agent");
 
   return (

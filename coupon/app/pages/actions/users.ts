@@ -29,10 +29,15 @@ const editSchema = z.object({
   pointsGained: z.coerce.number().int(),
 });
 
+const resetSchema = z.object({
+  email: z.string().min(1),
+  password: z.string().min(8),
+});
+
 export async function getUser() {
   const cookieStore = cookies();
   const authDoctor = cookieStore.get("authDoctor");
-  console.log(authDoctor?.value);
+
   return await User.find({
     authDoctor: authDoctor?.value,
   });
@@ -82,4 +87,22 @@ export async function editUser(prevState: unknown, formData: FormData) {
   const data = result.data;
 
   await User.updateOne({ email: data.email }, { $set: data });
+}
+
+export async function updateUserPassword(
+  prevState: unknown,
+  formData: FormData
+) {
+  const result = resetSchema.safeParse(Object.fromEntries(formData.entries()));
+
+  if (result.success === false) return result.error.formErrors.fieldErrors;
+
+  const data = result.data;
+
+  const hashedPassword = await bcrypt.hash(data.password, 10);
+
+  await User.updateOne(
+    { email: data.email },
+    { $set: { password: hashedPassword } }
+  );
 }

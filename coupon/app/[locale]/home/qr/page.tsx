@@ -4,12 +4,15 @@ import { cookies } from "next/headers";
 
 export default function DoctorQR() {
   const cookieStore = cookies();
-const authDoctor = cookieStore.get("authDoctor");
-console.log(authDoctor?.value)
+  const authDoctor = cookieStore.get("authDoctor");
+
   const value =
-    process.env.QR_REDIRECT + useLocale() + "/" + authDoctor?.value + "/register";
+    process.env.QR_REDIRECT +
+    useLocale() +
+    "/" +
+    authDoctor?.value +
+    "/register";
   const translations = useTranslations("Agent");
-  console.log(value);
 
   return (
     <div className="font-bold text-center">
