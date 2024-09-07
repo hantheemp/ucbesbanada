@@ -32,6 +32,7 @@ export async function sendEmailToReset(prevState: unknown, formData: FormData) {
   await fetch(`${process.env.BASE_URL}/api/emails`, {
     method: "POST",
     body: JSON.stringify({
+      type: "forgotPassword",
       email: data.email,
     }),
   });
