@@ -126,6 +126,7 @@ export async function registerByAgent(prevState: unknown, formData: FormData) {
   await fetch(`${process.env.BASE_URL}/api/emails`, {
     method: "POST",
     body: JSON.stringify({
+      type: "incomingPatient",
       authDoctor: newUser.authDoctor,
       name: newUser.name,
       surname: newUser.surname,
